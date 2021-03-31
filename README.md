@@ -19,11 +19,3 @@ npm install
 You are ready to go!
 
 # auction-service
-
-curl --location --request POST 'https://dev-rib0wbub.eu.auth0.com/oauth/token' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'client_id=cvFvvM6PcBLiZ76ju8VNm3M6TJtMKHQG' \
---data-urlencode 'username=mauro@gmail.com' \
---data-urlencode 'password=C0l1n4s.d3l,' \
---data-urlencode 'grant_type=password' \
---data-urlencode 'scope=openid'
