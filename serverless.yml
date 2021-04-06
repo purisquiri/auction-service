@@ -27,18 +27,23 @@ functions:
       - http:
           method: POST
           path: /auction
+          authorizer: ${self:custom.authorizer}
+
   getAuctions:
     handler: src/handlers/getAuctions.handler
     events:
       - http:
           method: GET
           path: /auctions
+          authorizer: ${self:custom.authorizer}
+
   getAuction:
     handler: src/handlers/getAuction.handler
     events:
       - http:
           method: GET
           path: /auction/{id}
+          authorizer: ${self:custom.authorizer}
 
   placeBid:
     handler: src/handlers/placeBid.handler
@@ -46,6 +51,7 @@ functions:
       - http:
           method: PATCH
           path: auction/{id}/bid
+          authorizer: ${self:custom.authorizer}
 
   processAuctions:
     handler: src/handlers/processAuctions.handler
@@ -54,6 +60,8 @@ functions:
     # this will use aws eventbridge, is an aws service that help to schedule events
     # every minute sound a lot but is not cause you have you 1million exscutions free and the your is pay minimal
 custom:
+  # authorizer: arn:aws:lambda:eu-west-1:653254190935:function:auth-service-dev-auth
+  authorizer: arn:aws:lambda:#{AWS::Region}:#{AWS::AccountId}:function:auth-service-${self:provider.stage}-auth
   AuctionsTable:
     name: !Ref AuctionsTable
     arn: !GetAtt AuctionsTable.Arn
