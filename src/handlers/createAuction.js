@@ -21,7 +21,7 @@ async function createAuction(event, context) {
     createdAt: now.toISOString(),
     endingAt: endDate.toISOString(),
     highestBid: {
-      amount: 10,
+      amount: 0,
     },
     seller: email,
   };
